@@ -1,69 +1,44 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, RequestHandler, Response } from "express";
 import { SpecialtyService } from "./specialty.service.";
+import { catchAsync } from "../../shared/catchAsync";
 
-const createSpecialty = async (req: Request , res: Response)=>{
-   try {
-     const payload = req.body;
-
-    const result = await SpecialtyService.createSpecialty(payload);
-
-    res.status(201).json({
-        success: true,
-        message: 'Spcialty created successfully',
-        data: result
-    });
-   } catch (error:any) {
-    console.log(error);
-    res.status(500).json({
-        success: false,
-        message: 'Failed to create specilty',
-        error: error.message
-    });
-   }
-}
-
-const getAllSpecialties = async (req: Request, res: Response)=>{
-try {
-    const specialties = await SpecialtyService.getAllSpecialties();
-
-    res.status(200).json({
-        success: true,
-        message: 'Specialties fetched successfully',
-        data: specialties
-    });
-    
-}  catch (error:any) {
-    console.log(error);
-    res.status(500).json({
-        success: false,
-        message: 'Failed to create specilty',
-        error: error.message
-    });
-   }
-}
+const createSpecialty = catchAsync(
+    async (req:Request, res:Response)=>{
+        const payload = req.body;
+        const result = await SpecialtyService.createSpecialty(payload);
+        res.status(201).json({
+            success:true,
+            message: 'Specialties created successfully',
+            data: result
+        })
+    }
+)
 
 
-const deleteSpecialty = async(req:Request, res: Response)=>{
-    try {
+const getAllSpecialties = catchAsync(
+    async(req: Request, res: Response)=>{
+        const result = await SpecialtyService.getAllSpecialties();
+        res.status(200).json({
+            success:true,
+            message: 'Specialties fetched successfully',
+            data: result
+        })
+    }
+)
+
+
+const deleteSpecialty = catchAsync(
+    async (req: Request, res: Response)=>{
         const { id } = req.params;
-
         const result = await SpecialtyService.deleteSpecialty(id as string);
+       res.status(200).json({
+            success:true,
+            message: 'Specialties deleted successfully',
+            data: result
+        });
+    }
+)
 
-         res.status(200).json({
-        success: true,
-        message: 'Specialties fetched successfully',
-        data: result
-    });
-        
-    } catch (error:any) {
-    console.log(error);
-    res.status(500).json({
-        success: false,
-        message: 'Failed to delete specilty',
-        error: error.message
-    });
-   }
-}
 
 export const SpecialtyController = {
     createSpecialty,
