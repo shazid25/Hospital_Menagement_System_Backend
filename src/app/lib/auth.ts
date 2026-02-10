@@ -38,11 +38,18 @@ export const auth = betterAuth({
                 defaultValue: false
             },
 
-            deletedAt:{
+            deletedAT:{
                 type: "date",
                 required: false,
                 defaultValue: null
             }
         }
     },
+
+    // trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:5000"],
+
+    // advanced:{
+    //     disableCSRFCheck: true,
+    // }
+
 });
