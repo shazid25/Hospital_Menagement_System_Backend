@@ -14,7 +14,7 @@ model Doctor {
     registrationNumber String @unique
     experience         Int
     gender             Gender
-    appoinmentFee      Float
+    appointmentFee      Float
     qualification      String
     currentWorkPlace   String
     description        String

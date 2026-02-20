@@ -38,7 +38,7 @@ export const auth = betterAuth({
                 defaultValue: false
             },
 
-            deletedAT:{
+            deletedAt:{
                 type: "date",
                 required: false,
                 defaultValue: null
