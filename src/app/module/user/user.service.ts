@@ -123,4 +123,4 @@ const createDoctor = async ( payload : ICreateDoctorPayload ) =>{
 
 export const userService = {
     createDoctor
-}
+} //
