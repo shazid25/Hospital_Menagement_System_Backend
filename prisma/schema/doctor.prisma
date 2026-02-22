@@ -12,12 +12,13 @@ model Doctor {
     updatedAt DateTime  @updatedAt
 
     registrationNumber String @unique
-    experience         Int
+    experience         Int @default(0)
     gender             Gender
     appointmentFee      Float
     qualification      String
     currentWorkPlace   String
-    description        String
+    designation        String
+    // description        String
     averageRating      Float  @default(0.0)
 
     //relationships

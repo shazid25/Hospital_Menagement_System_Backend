@@ -27,7 +27,7 @@ const createDoctor = async ( payload : ICreateDoctorPayload ) =>{
         throw new Error(`User with email ${payload.doctor.email} already exists`);
     }
 
-    const userData = await auth.api.signInEmail({
+    const userData = await auth.api.signUpEmail({
        body: {
         email: payload.doctor.email,
         password: payload.password,
@@ -42,7 +42,7 @@ const createDoctor = async ( payload : ICreateDoctorPayload ) =>{
             const doctorData = await tx.doctor.create({
                 data: {
                     userId: userData.user.id,
-                    ...payload.doctor,
+                  ...payload.doctor
                 }
             })
 
@@ -71,7 +71,7 @@ const createDoctor = async ( payload : ICreateDoctorPayload ) =>{
                     gender: true,
                     appointmentFee: true,
                     qualification: true,
-                    currentWorkplace: true,
+                    currentWorkPlace: true,
                     designation: true,
                     createdAt: true,
                     updatedAt: true,
@@ -123,4 +123,4 @@ const createDoctor = async ( payload : ICreateDoctorPayload ) =>{
 
 export const userService = {
     createDoctor
-} //
+}
