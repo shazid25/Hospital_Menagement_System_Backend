@@ -16,7 +16,7 @@ model Doctor {
     gender             Gender
     appointmentFee      Float
     qualification      String
-    currentWorkPlace   String
+   currentWorkingPlace String
     designation        String
     // description        String
     averageRating      Float  @default(0.0)

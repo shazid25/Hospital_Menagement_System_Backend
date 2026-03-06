@@ -33,7 +33,7 @@ CREATE TABLE "doctor" (
     "gender" "Gender" NOT NULL,
     "appointmentFee" DOUBLE PRECISION NOT NULL,
     "qualification" TEXT NOT NULL,
-    "currentWorkPlace" TEXT NOT NULL,
+    "currentWorkingPlace" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "averageRating" DOUBLE PRECISION NOT NULL DEFAULT 0.0,
     "userId" TEXT NOT NULL,
