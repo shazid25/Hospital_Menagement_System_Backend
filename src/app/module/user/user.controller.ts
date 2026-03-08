@@ -21,6 +21,6 @@ const createDoctor = catchAsync(
     }
 )
 
-export const userController = {
+export const UserController = {
     createDoctor,
 }
