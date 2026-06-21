@@ -24,35 +24,35 @@ const getRefreshToken = (payload: JwtPayload) => {
 }
 
 const setAccessTokenCookie = (res: Response, token: string) => {
-    const maxAge = ms(envVars.ACCESS_TOKEN_EXPIRES_IN as StringValue);
+    // const maxAge = ms(envVars.ACCESS_TOKEN_EXPIRES_IN as StringValue);
     CookieUtils.setCookie(res, "accessToken", token, {
         httpOnly: true,
         secure: true,
         sameSite: "none",
         path: "/",
-        maxAge: Number(maxAge),
+        maxAge: 60 * 60 * 60 * 24, // 1 day in seconds
     });
 }
 
 const setRefreshTokenCookie = ( res: Response, token: string)=>{
-    const maxAge = ms(envVars.REFRESH_TOKEN_EXPIRES_IN as StringValue);
+    // const maxAge = ms(envVars.REFRESH_TOKEN_EXPIRES_IN as StringValue);
     CookieUtils.setCookie(res, "refreshToken", token, {
         httpOnly: true,
         secure: true,
         sameSite: "none",
         path: "/",
-        maxAge: Number(maxAge),
+        maxAge: 60 * 60 * 60 * 24 * 7, // 7 days in seconds
     });
 }
 
 const setBetterAuthSessionCookie = ( res: Response, token: string) => {
-    const maxAge = ms(envVars.REFRESH_TOKEN_EXPIRES_IN as StringValue);
+    // const maxAge = ms(envVars.REFRESH_TOKEN_EXPIRES_IN as StringValue);
     CookieUtils.setCookie(res, "better-auth.session_token", token, {
         httpOnly: true,
         secure: true,
         sameSite: "none",
         path: "/",
-        maxAge: Number(maxAge),
+        maxAge: 60 * 60 * 60 * 24 // 1 day in seconds
     })
 }
 
